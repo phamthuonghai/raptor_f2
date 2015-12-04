@@ -31,17 +31,22 @@ def apply_jaccard(algo, size, sku_src, sku_dst, purchase_map, view_map, cart_map
 	if (size <= 0):
 		return res
 
-	sku_src = sorted(sku_src)
-	sku_dst = sorted(sku_dst)
+	sku_use_unfiltered = sku_src.union(sku_dst)
 
-	start_all = time.time()
-
-	for sku1 in sku_src:
+	for sku1 in sku_use_unfiltered:
 		res[sku1] = {}
-		for sku2 in sku_dst:
-			if (sku1 != sku2):
+		
+	# Filter single sku
+	if (algo == Algorithms.ORIG or algo == Algorithms.BYS):
+		sku_use = sorted([sku for sku in sku_use_unfiltered if sku in purchase_map])
+	elif (algo == Algorithms.VTD):
+		sku_use = sorted([sku for sku in sku_use_unfiltered if sku in cart_map or sku in purchase_map])
+	else:
+		sku_use = sorted([sku for sku in sku_use_unfiltered if sku in view_map])
 
-				start = time.time()
+	for sku1 in sku_use:
+		for sku2 in sku_use:
+			if (sku1 < sku2):
 
 				view_sku = (view_map.get(sku1, set([])), view_map.get(sku2, set([])))
 				purchase_sku = (purchase_map.get(sku1, set([])), purchase_map.get(sku2, set([])))
@@ -54,7 +59,7 @@ def apply_jaccard(algo, size, sku_src, sku_dst, purchase_map, view_map, cart_map
 				ints_view1_purchase2 = len(view_sku[0].intersection(purchase_sku[1]))
 
 				if (algo == Algorithms.ORIG):
-					if (ints_cart == 0):		#filterUnrelated
+					if (ints_cart == 0 or ints_purchase == 0):		#filterUnrelated
 						continue
 					val = wilson95(ints_purchase, len(purchase_sku[0]) + len(purchase_sku[1]) - ints_purchase)
 				elif (algo == Algorithms.BYS):
@@ -68,21 +73,27 @@ def apply_jaccard(algo, size, sku_src, sku_dst, purchase_map, view_map, cart_map
 								wilson95(ints_cart, len(cart_sku[0]) + len(cart_sku[1]) - ints_cart)
 								+ 0.2 * wilson95(ints_purchase, len(purchase_sku[0]) + len(purchase_sku[1]) - ints_purchase))
 				else:
+					if (ints_view == 0):		#filterUnrelated
+						continue
 					val = similar_filter_score(sku1, sku2) * wilson95(ints_view, len(view_sku[0]) + len(view_sku[1]) - ints_view)
-
-				res[sku1][sku2] = val
-
-				print "time: %.6f" % (time.time() - start)
-
-	print "final: %.6f" % (time.time()-start_all)
+				
+				if sku2 in sku_dst:
+					res[sku1][sku2] = val
+				if sku1 in sku_dst:
+					res[sku2][sku1] = val
+	res_f = {}
+	for sku1 in sku_src:
+		res_f[sku1] = {}
 
 	for k, v in res.iteritems():
-		if (len(v) > 0):
-			sorted_value = sorted(v.items(), key=itemgetter(1))
-			sorted_value.reverse()
-			res[k] = sorted_value[0:len(v) if size > len(v) else size]
+		if (k in sku_src and len(v) > 0):
+			sorted_value = sorted(v.items(), key=itemgetter(1), reverse = True)
+			t = len(v)
+			if (t > size):
+				t = size
+			res_f[k] = sorted_value[0:t]
 
-	return res
+	return res_f
 
 def wilson95(p, n):
 	if (p <= 0 or n <= 0):
@@ -181,4 +192,4 @@ if __name__ == "__main__":
 
 	print "Run PyRaptor with option: (" + options.algo, options.home, options.size, options.country + ")"
 
-	main(options.algo, options.home, options.size, options.country)
+	main(options.algo, options.home, int(options.size), options.country)

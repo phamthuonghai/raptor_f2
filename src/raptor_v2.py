@@ -31,17 +31,14 @@ def apply_jaccard(algo, size, sku_src, sku_dst, purchase_map, view_map, cart_map
 	if (size <= 0):
 		return res
 
-	sku_src = sorted(sku_src)
-	sku_dst = sorted(sku_dst)
+	sku_use = sorted(sku_src.union(sku_dst))
 
-	start_all = time.time()
-
-	for sku1 in sku_src:
+	for sku1 in sku_use:
 		res[sku1] = {}
-		for sku2 in sku_dst:
-			if (sku1 != sku2):
 
-				start = time.time()
+	for sku1 in sku_use:
+		for sku2 in sku_use:
+			if (sku1 < sku2):
 
 				view_sku = (view_map.get(sku1, set([])), view_map.get(sku2, set([])))
 				purchase_sku = (purchase_map.get(sku1, set([])), purchase_map.get(sku2, set([])))
@@ -69,17 +66,17 @@ def apply_jaccard(algo, size, sku_src, sku_dst, purchase_map, view_map, cart_map
 								+ 0.2 * wilson95(ints_purchase, len(purchase_sku[0]) + len(purchase_sku[1]) - ints_purchase))
 				else:
 					val = similar_filter_score(sku1, sku2) * wilson95(ints_view, len(view_sku[0]) + len(view_sku[1]) - ints_view)
-
-				res[sku1][sku2] = val
-
-				print "time: %.6f" % (time.time() - start)
-
-	print "final: %.6f" % (time.time()-start_all)
+				
+				if sku2 in sku_dst:
+					res[sku1][sku2] = val
+				if sku1 in sku_dst:
+					res[sku2][sku1] = val
 
 	for k, v in res.iteritems():
-		if (len(v) > 0):
-			sorted_value = sorted(v.items(), key=itemgetter(1))
-			sorted_value.reverse()
+		if (k not in sku_src):
+			del res[k]
+		elif (len(v) > 0):
+			sorted_value = sorted(v.items(), key=itemgetter(1), reverse = True)
 			res[k] = sorted_value[0:len(v) if size > len(v) else size]
 
 	return res
@@ -131,8 +128,8 @@ def print_output(country, output, list1, list2):
 def main(algo, home, size, country):
 	sku_src = set(line.strip() for line in open(home + '/Data/instock_skus_' + country + '.csv'))
 	sku_dst = set(line.strip() for line in open(home + '/Data/valid_skus_' + country + '.csv'))
-	sku_male = set(line.strip() for line in open(home + '/Data/sku_male_' + country + '.csv'))
-	sku_female = set(line.strip() for line in open(home + '/Data/sku_female_' + country + '.csv'))
+	sku_male = set(string.split(line)[0] for line in open(home + '/Data/sku_male_' + country + '.csv'))
+	sku_female = set(string.split(line)[0] for line in open(home + '/Data/sku_female_' + country + '.csv'))
 
 	purchase_map = file_to_map(open(home + '/Data/VTD_purchased_' + country + '.csv'))
 	view_map = file_to_map(open(home + '/Data/VTD_view_' + country + '.csv'))

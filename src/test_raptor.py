@@ -1,4 +1,4 @@
-import raptor
+import raptor_v2 as raptor
 import unittest
 
 class JacardTest(unittest.TestCase):
@@ -9,8 +9,8 @@ class JacardTest(unittest.TestCase):
 		algo = raptor.Algorithms.ORIG
 		size = 3
 
-		sku_src = {'sku0', 'sku1', 'sku2', 'sku3', 'sku4', 'sku5', 'sku6', 'sku7', 'sku8', 'sku9'}
-		sku_dst = {}
+		sku_src = set(['sku0', 'sku1', 'sku2', 'sku3', 'sku4', 'sku5', 'sku6', 'sku7', 'sku8', 'sku9'])
+		sku_dst = set([])
 
 		purchase_map = {'sku0': set(['cust1', 'cust2']), 'sku1': set(['cust1', 'cust2', 'cust3']),
 						'sku2': set(['cust2']), 'sku3': set(['cust1', 'cust2']),
@@ -41,8 +41,8 @@ class JacardTest(unittest.TestCase):
 		algo = raptor.Algorithms.ORIG
 		size = 3
 
-		sku_src = {'sku0', 'sku1', 'sku2', 'sku3', 'sku4'}
-		sku_dst = {'sku1', 'sku2', 'sku3', 'sku4'}
+		sku_src = set(['sku0', 'sku1', 'sku2', 'sku3', 'sku4'])
+		sku_dst = set(['sku1', 'sku2', 'sku3', 'sku4'])
 
 		purchase_map = {'sku0': set(['cust1', 'cust2']), 'sku1': set(['cust1', 'cust2', 'cust3']),
 						'sku2': set(['cust2']), 'sku3': set(['cust1', 'cust2']),
@@ -88,8 +88,8 @@ class JacardTest(unittest.TestCase):
 		algo = raptor.Algorithms.ORIG
 		size = 3
 
-		sku_src = {'sku5', 'sku6', 'sku7', 'sku8', 'sku9'}
-		sku_dst = {'sku5', 'sku6', 'sku7', 'sku8'}
+		sku_src = set(['sku5', 'sku6', 'sku7', 'sku8', 'sku9'])
+		sku_dst = set(['sku5', 'sku6', 'sku7', 'sku8'])
 
 		purchase_map = {'sku0': set(['cust1', 'cust2']), 'sku1': set(['cust1', 'cust2', 'cust3']),
 						'sku2': set(['cust2']), 'sku3': set(['cust1', 'cust2']),
@@ -141,8 +141,8 @@ class JacardTest(unittest.TestCase):
 		algo = raptor.Algorithms.BYS
 		size = 3
 
-		sku_src = {'sku0', 'sku1', 'sku2', 'sku3', 'sku4'}
-		sku_dst = {'sku1', 'sku2', 'sku3', 'sku4'}
+		sku_src = set(['sku0', 'sku1', 'sku2', 'sku3', 'sku4'])
+		sku_dst = set(['sku1', 'sku2', 'sku3', 'sku4'])
 
 		purchase_map = {'sku0': set(['cust1', 'cust2']), 'sku1': set(['cust1', 'cust2', 'cust3']),
 						'sku2': set(['cust2']), 'sku3': set(['cust1', 'cust2']),
@@ -188,8 +188,8 @@ class JacardTest(unittest.TestCase):
 		algo = raptor.Algorithms.VTD
 		size = 3
 
-		sku_src = {'sku0', 'sku1', 'sku2', 'sku3', 'sku4'}
-		sku_dst = {'sku1', 'sku2', 'sku3', 'sku4'}
+		sku_src = set(['sku0', 'sku1', 'sku2', 'sku3', 'sku4'])
+		sku_dst = set(['sku1', 'sku2', 'sku3', 'sku4'])
 
 		purchase_map = {'sku0': set(['cust1', 'cust2']), 'sku1': set(['cust1', 'cust2', 'cust3']),
 						'sku2': set(['cust2']), 'sku3': set(['cust1', 'cust2']),
@@ -235,8 +235,8 @@ class JacardTest(unittest.TestCase):
 		algo = raptor.Algorithms.ORIG
 		size = 0
 
-		sku_src = {'sku0', 'sku1', 'sku2', 'sku3', 'sku4', 'sku5', 'sku6', 'sku7', 'sku8', 'sku9'}
-		sku_dst = {'sku1', 'sku2', 'sku3', 'sku4', 'sku5', 'sku6', 'sku7', 'sku8'}
+		sku_src = set(['sku0', 'sku1', 'sku2', 'sku3', 'sku4', 'sku5', 'sku6', 'sku7', 'sku8', 'sku9'])
+		sku_dst = set(['sku1', 'sku2', 'sku3', 'sku4', 'sku5', 'sku6', 'sku7', 'sku8'])
 
 		purchase_map = {'sku0': set(['cust1', 'cust2']), 'sku1': set(['cust1', 'cust2', 'cust3']),
 						'sku2': set(['cust2']), 'sku3': set(['cust1', 'cust2']),
@@ -264,8 +264,8 @@ class JacardTest(unittest.TestCase):
 		algo = raptor.Algorithms.ORIG
 		size = -3
 
-		sku_src = {'sku0', 'sku1', 'sku2', 'sku3', 'sku4', 'sku5', 'sku6', 'sku7', 'sku8', 'sku9'}
-		sku_dst = {'sku1', 'sku2', 'sku3', 'sku4', 'sku5', 'sku6', 'sku7', 'sku8'}
+		sku_src = set(['sku0', 'sku1', 'sku2', 'sku3', 'sku4', 'sku5', 'sku6', 'sku7', 'sku8', 'sku9'])
+		sku_dst = set(['sku1', 'sku2', 'sku3', 'sku4', 'sku5', 'sku6', 'sku7', 'sku8'])
 
 		purchase_map = {'sku0': set(['cust1', 'cust2']), 'sku1': set(['cust1', 'cust2', 'cust3']),
 						'sku2': set(['cust2']), 'sku3': set(['cust1', 'cust2']),
@@ -292,8 +292,8 @@ class JacardTest(unittest.TestCase):
 	def testBrandNew(self):
 		algo = raptor.Algorithms.ORIG
 		size = 3
-		sku_src = {'sku0', 'sku1', 'sku2', 'sku3', 'sku4', 'sku5', 'sku6', 'sku7', 'sku8', 'sku9'}
-		sku_dst = {'sku1', 'sku2', 'sku3', 'sku4', 'sku5', 'sku6', 'sku7', 'sku8'}
+		sku_src = set(['sku0', 'sku1', 'sku2', 'sku3', 'sku4', 'sku5', 'sku6', 'sku7', 'sku8', 'sku9'])
+		sku_dst = set(['sku1', 'sku2', 'sku3', 'sku4', 'sku5', 'sku6', 'sku7', 'sku8'])
 		purchase_map = {}
 		view_map = {}
 		cart_map = {}
@@ -307,8 +307,8 @@ class JacardTest(unittest.TestCase):
 	def testNull(self):
 		algo = raptor.Algorithms.ORIG
 		size = 3
-		sku_src = {}
-		sku_dst = {}
+		sku_src = set([])
+		sku_dst = set([])
 		purchase_map = {}
 		view_map = {}
 		cart_map = {}

@@ -1,0 +1,136 @@
+============================================
+||           Raptor Bechmarck             ||
+============================================
+================ 10 ===================
+===   PyRaptor   ===
+Run PyRaptor with option: (original ./lab/PyRaptor/10 3 sg)
+
+real	0m0.028s
+user	0m0.016s
+sys	0m0.008s
+=== PyRaptor old ===
+Run PyRaptor with option: (original ./lab/PyRaptor_old/10 3 sg)
+
+real	0m0.026s
+user	0m0.020s
+sys	0m0.000s
+=== Haskell old ===
+running with options: ("sg",3,"original","./lab/Haskell/10")
+
+real	0m0.038s
+user	0m0.000s
+sys	0m0.000s
+================ 50 ===================
+===   PyRaptor   ===
+Run PyRaptor with option: (original ./lab/PyRaptor/50 10 sg)
+
+real	0m0.033s
+user	0m0.016s
+sys	0m0.008s
+=== PyRaptor old ===
+Run PyRaptor with option: (original ./lab/PyRaptor_old/50 10 sg)
+
+real	0m0.027s
+user	0m0.024s
+sys	0m0.000s
+=== Haskell old ===
+running with options: ("sg",3,"original","./lab/Haskell/50")
+
+real	0m0.005s
+user	0m0.004s
+sys	0m0.000s
+================ 100 ==================
+===   PyRaptor   ===
+Run PyRaptor with option: (original ./lab/PyRaptor/100 30 sg)
+
+real	0m0.032s
+user	0m0.024s
+sys	0m0.004s
+=== PyRaptor old ===
+Run PyRaptor with option: (original ./lab/PyRaptor_old/100 30 sg)
+
+real	0m0.037s
+user	0m0.028s
+sys	0m0.004s
+=== Haskell old ===
+running with options: ("sg",30,"original","./lab/Haskell/100")
+
+real	0m0.013s
+user	0m0.012s
+sys	0m0.000s
+================ 500 ==================
+===   PyRaptor   ===
+Run PyRaptor with option: (original ./lab/PyRaptor/500 30 sg)
+
+real	0m0.220s
+user	0m0.212s
+sys	0m0.004s
+=== PyRaptor old ===
+Run PyRaptor with option: (original ./lab/PyRaptor_old/500 30 sg)
+
+real	0m0.276s
+user	0m0.260s
+sys	0m0.012s
+=== Haskell old ===
+running with options: ("sg",30,"original","./lab/Haskell/500")
+
+real	0m0.131s
+user	0m0.128s
+sys	0m0.000s
+================ 1000 =================
+===   PyRaptor   ===
+Run PyRaptor with option: (original ./lab/PyRaptor/1000 30 sg)
+
+real	0m0.802s
+user	0m0.788s
+sys	0m0.008s
+=== PyRaptor old ===
+Run PyRaptor with option: (original ./lab/PyRaptor_old/1000 30 sg)
+
+real	0m1.091s
+user	0m1.080s
+sys	0m0.008s
+=== Haskell old ===
+running with options: ("sg",30,"original","./lab/Haskell/1000")
+
+real	0m0.541s
+user	0m0.532s
+sys	0m0.004s
+================ 5000 =================
+===   PyRaptor   ===
+Run PyRaptor with option: (original ./lab/PyRaptor/5000 30 sg)
+
+real	0m22.406s
+user	0m22.408s
+sys	0m0.012s
+=== PyRaptor old ===
+Run PyRaptor with option: (original ./lab/PyRaptor_old/5000 30 sg)
+
+real	0m31.185s
+user	0m31.160s
+sys	0m0.048s
+=== Haskell old ===
+running with options: ("sg",30,"original","./lab/Haskell/5000")
+
+real	0m14.220s
+user	0m14.192s
+sys	0m0.024s
+================ 10000 ================
+===   PyRaptor   ===
+Run PyRaptor with option: (original ./lab/PyRaptor/10000 30 sg)
+
+real	1m29.089s
+user	1m29.140s
+sys	0m0.028s
+=== PyRaptor old ===
+Run PyRaptor with option: (original ./lab/PyRaptor_old/10000 30 sg)
+
+real	1m58.559s
+user	1m58.636s
+sys	0m0.032s
+=== Haskell old ===
+running with options: ("sg",30,"original","./lab/Haskell/10000")
+
+real	1m0.931s
+user	1m0.908s
+sys	0m0.040s

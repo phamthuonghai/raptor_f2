@@ -40,39 +40,42 @@ def apply_jaccard(algo, size, sku_src, sku_dst, purchase_map, view_map, cart_map
 		res[sku1] = {}
 		for sku2 in sku_dst:
 			if (sku1 != sku2):
-
-				start = time.time()
-
-				view_sku = (view_map.get(sku1, set([])), view_map.get(sku2, set([])))
-				purchase_sku = (purchase_map.get(sku1, set([])), purchase_map.get(sku2, set([])))
-				cart_sku = (cart_map.get(sku1, set([])), cart_map.get(sku2, set([])))
-
-				ints_cart = len(cart_sku[0].intersection(cart_sku[1]))
-				ints_view = len(view_sku[0].intersection(view_sku[1]))
-				ints_purchase = len(purchase_sku[0].intersection(purchase_sku[1]))
-				ints_purchase1_view2 = len(purchase_sku[0].intersection(view_sku[1]))
-				ints_view1_purchase2 = len(view_sku[0].intersection(purchase_sku[1]))
-
-				if (algo == Algorithms.ORIG):
-					if (ints_cart == 0):		#filterUnrelated
-						continue
-					val = wilson95(ints_purchase, len(purchase_sku[0]) + len(purchase_sku[1]) - ints_purchase)
-				elif (algo == Algorithms.BYS):
-					if (ints_purchase == 0):	#filterUnrelated
-						continue
-					val = wilson95(ints_purchase, ints_purchase1_view2 + ints_view1_purchase2)
-				elif (algo == Algorithms.VTD):
-					if (ints_cart == 0):		#filterUnrelated
-						continue
-					val = similar_filter_score(sku1, sku2) * ( 
-								wilson95(ints_cart, len(cart_sku[0]) + len(cart_sku[1]) - ints_cart)
-								+ 0.2 * wilson95(ints_purchase, len(purchase_sku[0]) + len(purchase_sku[1]) - ints_purchase))
+				
+				# looking for calculated result to avoid duplicated calculation
+				if (sku2 in res and sku1 in res[sku2]):
+					val = res[sku2][sku1]
 				else:
-					val = similar_filter_score(sku1, sku2) * wilson95(ints_view, len(view_sku[0]) + len(view_sku[1]) - ints_view)
+					start = time.time()
 
+					view_sku = (view_map.get(sku1, set([])), view_map.get(sku2, set([])))
+					purchase_sku = (purchase_map.get(sku1, set([])), purchase_map.get(sku2, set([])))
+					cart_sku = (cart_map.get(sku1, set([])), cart_map.get(sku2, set([])))
+
+					ints_cart = len(cart_sku[0].intersection(cart_sku[1]))
+					ints_view = len(view_sku[0].intersection(view_sku[1]))
+					ints_purchase = len(purchase_sku[0].intersection(purchase_sku[1]))
+					ints_purchase1_view2 = len(purchase_sku[0].intersection(view_sku[1]))
+					ints_view1_purchase2 = len(view_sku[0].intersection(purchase_sku[1]))
+
+					if (algo == Algorithms.ORIG):
+						if (ints_cart == 0):		#filterUnrelated
+							continue
+						val = wilson95(ints_purchase, len(purchase_sku[0]) + len(purchase_sku[1]) - ints_purchase)
+					elif (algo == Algorithms.BYS):
+						if (ints_purchase == 0):	#filterUnrelated
+							continue
+						val = wilson95(ints_purchase, ints_purchase1_view2 + ints_view1_purchase2)
+					elif (algo == Algorithms.VTD):
+						if (ints_cart == 0):		#filterUnrelated
+							continue
+						val = similar_filter_score(sku1, sku2) * ( 
+									wilson95(ints_cart, len(cart_sku[0]) + len(cart_sku[1]) - ints_cart)
+									+ 0.2 * wilson95(ints_purchase, len(purchase_sku[0]) + len(purchase_sku[1]) - ints_purchase))
+					else:
+						val = similar_filter_score(sku1, sku2) * wilson95(ints_view, len(view_sku[0]) + len(view_sku[1]) - ints_view)
+
+					print "time: %.6f" % (time.time() - start)
 				res[sku1][sku2] = val
-
-				print "time: %.6f" % (time.time() - start)
 
 	print "final: %.6f" % (time.time()-start_all)
 

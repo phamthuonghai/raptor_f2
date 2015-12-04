@@ -1,0 +1,45 @@
+============================================
+||      Optimized PyRaptor Bechmark       ||
+============================================
+================ 10 ===================
+Run PyRaptor with option: (original ./lab/PyRaptor/10 3 sg)
+
+real	0m0.037s
+user	0m0.032s
+sys	0m0.000s
+================ 50 ===================
+Run PyRaptor with option: (original ./lab/PyRaptor/50 10 sg)
+
+real	0m0.033s
+user	0m0.020s
+sys	0m0.008s
+================ 100 ==================
+Run PyRaptor with option: (original ./lab/PyRaptor/100 30 sg)
+
+real	0m0.034s
+user	0m0.024s
+sys	0m0.004s
+================ 500 ==================
+Run PyRaptor with option: (original ./lab/PyRaptor/500 30 sg)
+
+real	0m0.072s
+user	0m0.060s
+sys	0m0.008s
+================ 1000 =================
+Run PyRaptor with option: (original ./lab/PyRaptor/1000 30 sg)
+
+real	0m0.125s
+user	0m0.108s
+sys	0m0.012s
+================ 5000 =================
+Run PyRaptor with option: (original ./lab/PyRaptor/5000 30 sg)
+
+real	0m1.264s
+user	0m1.248s
+sys	0m0.012s
+================ 10000 ================
+Run PyRaptor with option: (original ./lab/PyRaptor/10000 30 sg)
+
+real	0m5.887s
+user	0m5.844s
+sys	0m0.040s

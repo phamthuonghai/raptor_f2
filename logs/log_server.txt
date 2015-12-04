@@ -1,0 +1,72 @@
+======================= RUNNING RAPTOR WITH ALGORITHM = original 1 15 =======================
+Working on Raptor from day#15 to day#0. Provided that current day is day#0
+  Haskell: running Raptor for Country:  MY
+running with options: ("my",30,"original","/home/ubuntu/Recommendation/Haskell")
+3713
+  Haskell: running Raptor for Country:  ID
+running with options: ("id",30,"original","/home/ubuntu/Recommendation/Haskell")
+4951
+  Haskell: running Raptor for Country:  PH
+running with options: ("ph",30,"original","/home/ubuntu/Recommendation/Haskell")
+5331
+  Haskell: running Raptor for Country:  TH
+running with options: ("th",30,"original","/home/ubuntu/Recommendation/Haskell")
+3130
+  Haskell: running Raptor for Country:  SG
+running with options: ("sg",30,"original","/home/ubuntu/Recommendation/Haskell")
+3733
+  Haskell: running Raptor for Country:  HK
+running with options: ("hk",30,"original","/home/ubuntu/Recommendation/Haskell")
+1602
+  Haskell: running Raptor for Country:  VN
+running with options: ("vn",30,"original","/home/ubuntu/Recommendation/Haskell")
+3104
+Finished calculating Raptor 1 to 1
+Joining Raptor 1 - 1 to Raptor...
+Joining Raptors for:  MY
+Joining Raptors for:  ID
+Joining Raptors for:  PH
+Joining Raptors for:  TH
+Joining Raptors for:  SG
+Joining Raptors for:  HK
+Joining Raptors for:  VN
+
+----- Waiting for joining all the Raptors together.
+----- Done Waiting
+======================= FINISHED RUNNING RAPTOR WITH ALGORITHM = original 1 15 =======================
+======================= RUNNING RAPTOR WITH ALGORITHM = vtd 1 15 =======================
+Working on Raptor from day#15 to day#0. Provided that current day is day#0
+  Haskell: running Raptor for Country:  MY
+running with options: ("my",30,"vtd","/home/ubuntu/Recommendation/Haskell")
+3701
+  Haskell: running Raptor for Country:  ID
+running with options: ("id",30,"vtd","/home/ubuntu/Recommendation/Haskell")
+4943
+  Haskell: running Raptor for Country:  PH
+running with options: ("ph",30,"vtd","/home/ubuntu/Recommendation/Haskell")
+5388
+  Haskell: running Raptor for Country:  TH
+running with options: ("th",30,"vtd","/home/ubuntu/Recommendation/Haskell")
+3135
+  Haskell: running Raptor for Country:  SG
+running with options: ("sg",30,"vtd","/home/ubuntu/Recommendation/Haskell")
+3785
+  Haskell: running Raptor for Country:  HK
+running with options: ("hk",30,"vtd","/home/ubuntu/Recommendation/Haskell")
+1625
+  Haskell: running Raptor for Country:  VN
+running with options: ("vn",30,"vtd","/home/ubuntu/Recommendation/Haskell")
+3128
+Finished calculating Raptor 1 to 1
+Joining Raptor 1 - 1 to Raptor...
+Joining Raptors for:  MY
+Joining Raptors for:  ID
+Joining Raptors for:  PH
+Joining Raptors for:  TH
+Joining Raptors for:  SG
+Joining Raptors for:  HK
+Joining Raptors for:  VN
+
+----- Waiting for joining all the Raptors together.
+----- Done Waiting
+======================= FINISHED RUNNING RAPTOR WITH ALGORITHM = vtd 1 15 =======================

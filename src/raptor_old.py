@@ -9,8 +9,6 @@ from optparse import OptionParser
 from operator import itemgetter
 import os
 
-import time
-
 class Algorithms:
     ORIG, BYS, VTD, VSZ = range(4)
 
@@ -34,14 +32,10 @@ def apply_jaccard(algo, size, sku_src, sku_dst, purchase_map, view_map, cart_map
 	sku_src = sorted(sku_src)
 	sku_dst = sorted(sku_dst)
 
-	start_all = time.time()
-
 	for sku1 in sku_src:
 		res[sku1] = {}
 		for sku2 in sku_dst:
 			if (sku1 != sku2):
-
-				start = time.time()
 
 				view_sku = (view_map.get(sku1, set([])), view_map.get(sku2, set([])))
 				purchase_sku = (purchase_map.get(sku1, set([])), purchase_map.get(sku2, set([])))
@@ -71,10 +65,6 @@ def apply_jaccard(algo, size, sku_src, sku_dst, purchase_map, view_map, cart_map
 					val = similar_filter_score(sku1, sku2) * wilson95(ints_view, len(view_sku[0]) + len(view_sku[1]) - ints_view)
 
 				res[sku1][sku2] = val
-
-				print "time: %.6f" % (time.time() - start)
-
-	print "final: %.6f" % (time.time()-start_all)
 
 	for k, v in res.iteritems():
 		if (len(v) > 0):
@@ -181,4 +171,4 @@ if __name__ == "__main__":
 
 	print "Run PyRaptor with option: (" + options.algo, options.home, options.size, options.country + ")"
 
-	main(options.algo, options.home, options.size, options.country)
+	main(options.algo, options.home, int(options.size), options.country)

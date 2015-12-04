@@ -1,0 +1,39 @@
+nohup: ignoring input
+============================================
+||      Optimized PyRaptor Bechmark       ||
+============================================
+Run PyRaptor with option: (vtd ./Haskell 30 my)
+
+real	14m50.172s
+user	14m49.821s
+sys	0m0.252s
+Run PyRaptor with option: (vtd ./Haskell 30 id)
+
+real	13m37.467s
+user	13m37.207s
+sys	0m0.208s
+Run PyRaptor with option: (vtd ./Haskell 30 ph)
+
+real	17m59.536s
+user	17m59.275s
+sys	0m0.228s
+Run PyRaptor with option: (vtd ./Haskell 30 th)
+
+real	4m19.824s
+user	4m19.682s
+sys	0m0.136s
+Run PyRaptor with option: (vtd ./Haskell 30 sg)
+
+real	13m15.279s
+user	13m15.091s
+sys	0m0.168s
+Run PyRaptor with option: (vtd ./Haskell 30 hk)
+
+real	2m44.897s
+user	2m44.825s
+sys	0m0.068s
+Run PyRaptor with option: (vtd ./Haskell 30 vn)
+
+real	6m21.494s
+user	6m21.317s
+sys	0m0.140s
